@@ -22,5 +22,7 @@ $_SESSION['PrevPage'] = "index.php";
 	
 	
 	<body>
+		功能尚未開放。<br/>
+		<a href="index.php">回到上一頁</a>
 	</body>
 </html>
