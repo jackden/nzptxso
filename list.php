@@ -1,7 +1,6 @@
 <?php require_once('Connections/connection.php'); ?>
 <?php require_once('Connections/function.php'); ?>
 <?php
-//member
 // 建立 session
 if (!isset($_SESSION)) {
   session_start();
