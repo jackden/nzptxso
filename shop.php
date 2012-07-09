@@ -73,6 +73,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" /></td>
 				</tr>
+				
+				<tr>
+					<td><a href="create.php">回到上一頁</a></td>
+				</tr>
 			</table>
 			<input name="insert" id="insert" type="hidden" value="notice" />
 		</form>

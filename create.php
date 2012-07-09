@@ -23,6 +23,12 @@ if(!empty($_SERVER['HTTP_CLIENT_IP'])){
 ?>
 
 <?php
+	date_default_timezone_set('Asia/Taipei');
+	$orderDate=date("Y-m-d");
+	$now=date("H:i");
+?>
+
+<?php
 //**********************************//
 // 在lunchGroup資料表內插入一筆新的紀錄
 //**********************************//
@@ -32,10 +38,11 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
 	
 	// 在notice資料表內插入一筆新的紀錄
-	$query = sprintf("INSERT INTO lunchGroup (primaryName, shopName, orderDate, userIp) 
-	VALUES (%s, %s, %s, %s)", 
+	$query = sprintf("INSERT INTO lunchGroup (primaryName, shopName, orderDate, userIp, overTime) 
+	VALUES (%s, %s, %s, %s, %s)", 
 	GetSQLValue($_POST['primaryName'], "text"), GetSQLValue($_POST['shopName'], "text"),
-	GetSQLValue($orderDate, "text"), GetSQLValue($userIp, "text") );
+	GetSQLValue($orderDate, "text"), GetSQLValue($userIp, "text"), 
+	GetSQLValue($_POST['hours'].":".$_POST['mins'], "text") );
 		
 	// 傳回結果集
     $result = mysql_query($query, $connection) or die(mysql_error());
@@ -47,10 +54,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 }
 ?>
 
-<?php
-	date_default_timezone_set('Asia/Taipei');
-	$orderDate=date("Y-m-d");
-?>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -102,12 +106,39 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						
 					</td>
 				</tr>
+				<tr>
+					<td><center>結團時間:</center></td>
+					<td>
+						<select id="hours" name="hours">
+							<option value="-1">請選擇</option>
+							<?php
+							$nowTime=explode(":",$now);
+							for($i=$nowTime[0]+1;$i<24;$i++) {
+								$var=sprintf("%02d", $i);
+							?>
+								<option value="<?php echo $var ?>"><?php echo $var ?></option>
+							<?php
+							};
+							?>
+						</select>
+						時
+						<select id="mins" name="mins">
+							<option value="-1">請選擇</option>
+							<option value="00">00</option>
+							<option value="30">30</option>
+						</select>
+						分<br>
+					</td>
+				</tr>
 				
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" /></td>
 				</tr>
+				
+				<tr>
+					<td><a href="index.php">回到上一頁</a></td>
+				</tr>
 			</table>
-			<input name="orderDate" id="orderDate" type="hidden" value="<? echo $orderDate; ?>"/>
 			<input name="insert" id="insert" type="hidden" value="notice" />
 		</form>
 	</body>

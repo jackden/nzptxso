@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 
 
 // 前一個網頁
-$_SESSION['PrevPage'] = "order.php?groupId=".$groupId;
+$_SESSION['PrevPage'] = 'index.php';
 
 $_SESSION['menuCount'] = 0;
 $_SESSION['menuCount'] = $_POST['menuCount'];
@@ -37,7 +37,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	// 選擇 MySQL 資料庫lunch
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
 	
-	$query1 = "SELECT shopName FROM lunchgroup WHERE id = '$groupId' "; 
+	$query1 = "SELECT shopName FROM lunchGroup WHERE id = '$groupId' "; 
 	// 傳回結果集
 	$result1 = mysql_query($query1, $connection) or die(mysql_error());
 	if ($result1) { $row1 = mysql_fetch_assoc($result1); }
@@ -80,6 +80,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 			輸入要增加幾筆菜單
 			<input name="menuCount" id="menuCount" type="int" maxlength="30" size="5" />
 			<input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" />
+			</br><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a>
 		</form>
 		<?php
 			};
@@ -104,6 +105,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields1();" /></td>
+				</tr>
+				
+				<tr>
+					<td><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a></td>
 				</tr>
 			</table>
 			<input name="insert" id="insert" type="hidden" value="notice" />

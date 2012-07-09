@@ -95,7 +95,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						
 						$orderDate=$today;
 						
-						$query3 = "SELECT shopName FROM lunchgroup WHERE id = '$groupId' "; 
+						$query3 = "SELECT shopName FROM lunchGroup WHERE id = '$groupId' "; 
 						// 傳回結果集
 						$result3 = mysql_query($query3, $connection) or die(mysql_error());
 						if ($result3) { $row3 = mysql_fetch_assoc($result3); }
@@ -147,6 +147,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				</tr>
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" /></td>
+				</tr>
+				
+				<tr>
+					<td><a href="index.php">回到上一頁</a></td>
 				</tr>
 			</table>
 			<input name="insert" id="insert" type="hidden" value="notice" />

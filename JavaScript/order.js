@@ -12,8 +12,9 @@ function CheckFields()
 		
 	// 檢查『餐點』欄位
 	var checkit = false;
-	for (var i=0;i<foodName.length;i++) {
-		if (foodName[i].checked) {checkit=true;break;}
+	var fieldvalue = document.getElementsByName('foodName');
+	for (var i=0;i<fieldvalue.length;i++) {
+		if (fieldvalue[i].checked) {checkit=true;break;}
 	}
 	if (!checkit) {
 		alert("沒有選擇『餐點』!");

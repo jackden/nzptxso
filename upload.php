@@ -60,12 +60,16 @@ $_SESSION['PrevPage'] = "index.php";
 						</select>
 					</td>
 					<td>
-						<Input Type="File" id="upfile" Name="upfile" ><br>
+						<Input type="File" id="upfile" name="upfile" ><br>
 					</td>
 				</tr>
 				
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="開始上傳" onclick="return CheckFields();" /></td>
+				</tr>
+				
+				<tr>
+					<td><a href="index.php">回到上一頁</a></td>
 				</tr>
 			</table>
 			<input name="insert" id="insert" type="hidden" value="notice" />

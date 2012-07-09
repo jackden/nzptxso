@@ -8,13 +8,17 @@ if (!isset($_SESSION)) {
 
 // 前一個網頁
 $_SESSION['PrevPage'] = "index.php";
+
+$userlevel=0;
+$userlevel=$_GET['userlevel'];
 }
 ?>
 
 <?php
 	date_default_timezone_set('Asia/Taipei');
 	$today=date("Y-m-d");
-	$now=date("H:i:s");
+	//$now=date("H:i:s");
+	$now=date("H:i");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -68,11 +72,39 @@ $_SESSION['PrevPage'] = "index.php";
 				<td>
 					<?php echo "今天中午吃" . "<font size=\"5\" color=\"FF0000\">" . $row['shopName'] . "</font>"; $shopName=$row['shopName']; ?>
 				</td>
+				<?php
+					if($userlevel==1) {
+				?>
+					<td>
+						<input type="button" value="X" onclick="self.location.href='delete.php?groupId=<?php echo $row['id'] ?>&userlevel=2'">
+					</td>
+				<?php
+					};
+				?>
 			</tr>
 			<tr>
-				<td>
-					<a href="order.php?groupId=<?php echo $row['id'] ?>">我要訂購</a>
-				</td>
+				<?php
+					$overTime=explode(":",$row['overTime']);
+					$nowTime=explode(":",$now);
+					
+					if( ($nowTime[0]<$overTime[0]) || ($nowTime[0]==$overTime[0] && $nowTime[1]<$overTime[1]) ) {
+				?>
+					<td>
+						<a href="order.php?groupId=<?php echo $row['id'] ?>">我要訂購</a><br/>
+						結團時間為<?php echo $row['overTime'] ?>
+					</td>
+				<?php
+					}
+					else {
+				?>
+					<td>
+						訂購時間已過<br/>
+						結團時間為<?php echo $row['overTime'] ?>
+					</td>
+				<?php
+					}
+					
+				?>
 				<td>
 					<?php
 					$query5 = "SELECT shopPhone FROM shop WHERE shopName = '$shopName'";
@@ -100,6 +132,15 @@ $_SESSION['PrevPage'] = "index.php";
 									else if($row1['userRemark']==-1) { echo "&nbsp;減飯/麵"; }
 								?>
 							</td>
+							<?php
+								if($userlevel==1) {
+							?>
+								<td>
+									<input type="button" value="X" onclick="self.location.href='delete.php?groupId=<?php echo $row1['id'] ?>&userlevel=1'">
+								</td>
+							<?php
+								};
+							?>
 						</tr>
 			<?php
 					};

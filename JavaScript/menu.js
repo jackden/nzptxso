@@ -28,28 +28,30 @@ function CheckFields()
 function CheckFields1()
 {		
 	// 檢查『名稱』欄位
-	for (var i=0;i<foodName.length;i++) {
-		if (foodName[i].value == "") 
+	var fieldvalue = document.getElementsByName('foodName[]');
+	for (var i=0;i<fieldvalue.length;i++) {
+		if (fieldvalue[i].value == "") 
 		{
 			alert("『名稱』欄位不可以是空白!");
-			foodName[i].focus();
+			fieldvalue[i].focus();
 			return false;
 		}
 	}
 	
 	// 檢查『價格』欄位
-	for (var i=0;i<foodPrice.length;i++) {
-		if (foodPrice[i].value == "") 
+	var fieldvalue = document.getElementsByName('foodPrice[]');
+	for (var i=0;i<fieldvalue.length;i++) {
+		if (fieldvalue[i].value == "") 
 		{
 			alert("『價格』欄位不可以是空白!");
-			foodPrice[i].focus();
+			fieldvalue[i].focus();
 			return false;
 		}
 		var re = /^[0-9]+$/;
-		if (!re.test(foodPrice[i].value))
+		if (!re.test(fieldvalue[i].value))
 		{
 			alert("『價格』欄位必須為數字!");
-			foodPrice[i].focus();
+			fieldvalue[i].focus();
 			return false;
 		}
 	}
