@@ -40,12 +40,12 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
 	
 	// 在orderLog資料表內插入一筆新的紀錄
-	$query = sprintf("INSERT INTO orderLog (userName, groupId, foodName, foodCount, userRemark, orderDate, userIp) 
-	VALUES (%s, %s, %s, %s, %s, %s, %s)", 
+	$query = sprintf("INSERT INTO orderLog (userName, groupId, foodName, foodCount, userRemark, userRemark1, orderDate, userIp) 
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", 
 	GetSQLValue($_POST['userName'], "text"), GetSQLValue($groupId, "int"),
 	GetSQLValue($_POST['foodName'], "text"), GetSQLValue($_POST['foodCount'], "int"),
-	GetSQLValue($_POST['userRemark'], "int"), GetSQLValue($today, "text"),
-	GetSQLValue($userIp, "text") );
+	GetSQLValue($_POST['userRemark'], "text"), GetSQLValue($_POST['userRemark1'], "text"),
+	GetSQLValue($today, "text"), GetSQLValue($userIp, "text") );
 		
 	// 傳回結果集
     $result = mysql_query($query, $connection) or die(mysql_error());
@@ -123,11 +123,15 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 								?>
 										<a href="showimg.php?filename=<?php echo $row2['filename'] ?>" rel="lightbox" title="<?php echo $row1['foodName'] ?>">圖片</a>
 								<?php
-									};
+									}
 								?>
 								</br>
 						<?php
-							};
+							}
+							if(!$row2)
+							{
+								echo "<font color=\"#FF0000\">"."目前尚無菜單"."</font>"."，可至右上方連結新增菜單。";
+							}
 						}
 						?>
 						
@@ -138,13 +142,34 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5"  /></td>
 				</tr>
 				<tr>
-					<td><center>是否加飯:</center></td>
+					<td><center>飯量:</center></td>
 					<td>
-						<input type="radio" id="userRemark" name="userRemark" value="1"><label>加飯/麵</label>
-						<input type="radio" id="userRemark" name="userRemark" value="0" checked="checked"><label>正常</label>
-						<input type="radio" id="userRemark" name="userRemark" value="-1"><label>減飯/麵</label>
+						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
+						<input type="radio" id="userRemark" name="userRemark" value="加飯/麵"><label>加飯/麵</label>
+						<input type="radio" id="userRemark" name="userRemark" value="減飯/麵"><label>減飯/麵</label>
 					</td>
 				</tr>
+				<!--- <tr>
+					<td><center>溫度:</center></td>
+					<td>
+						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
+						<input type="radio" id="userRemark" name="userRemark" value="去冰"><label>去冰</label>
+						<input type="radio" id="userRemark" name="userRemark" value="微冰"><label>微冰</label>
+						<input type="radio" id="userRemark" name="userRemark" value="少冰"><label>少冰</label>
+						<input type="radio" id="userRemark" name="userRemark" value="溫"><label>溫</label>
+						<input type="radio" id="userRemark" name="userRemark" value="熱"><label>熱</label>
+					</td>
+				</tr>
+				<tr>
+					<td><center>甜度:</center></td>
+					<td>
+						<input type="radio" id="userRemark1" name="userRemark1" value="正常" checked="checked"><label>正常</label>
+						<input type="radio" id="userRemark1" name="userRemark1" value="無糖"><label>無糖</label>
+						<input type="radio" id="userRemark1" name="userRemark1" value="微糖"><label>微糖(3分)</label>
+						<input type="radio" id="userRemark1" name="userRemark1" value="半糖"><label>半糖(5分)</label>
+						<input type="radio" id="userRemark1" name="userRemark1" value="少糖"><label>少糖(8分)</label>
+					</td>
+				</tr> --->
 				<tr>
 					<td><input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" /></td>
 				</tr>

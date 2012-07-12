@@ -85,13 +85,14 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					</td>
 				</tr>
 				<tr>
-					<td><center>今天吃哪家:</center></td>
+					<td><center>今天訂哪家:</center></td>
 					<?php
 						mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
 						
 						$query = "SELECT * FROM shop"; 
 						// 傳回結果集
 						$result = mysql_query($query, $connection) or die(mysql_error());
+						$num=mysql_num_rows($result);
 					?>
 					<td>
 						<?php
@@ -100,7 +101,11 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						?>
 								<input type="radio" id="shopName" name="shopName" value="<?php echo $row['shopName'] ?>"><label><?php echo $row['shopName'] ."&nbsp; 電話號碼:". $row['shopPhone'] ?></label></br>
 						<?php
-							};
+							}
+							if($num==0)
+							{
+								echo "<font color=\"#FF0000\">"."目前尚無店家"."</font>"."，可至右上方連結新增店家。";
+							}
 						}
 						?>
 						

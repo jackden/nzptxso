@@ -56,8 +56,9 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	}
 	
 	if ($result) {
+		$uri="order.php?groupId=".$groupId;
 	    // 回到前一個網頁 
-	  	header(sprintf("Location: %s", $_SESSION['PrevPage']));
+	  	header(sprintf("Location: %s", $uri));
 	}
 }
 ?>

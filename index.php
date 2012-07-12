@@ -46,10 +46,11 @@ $userlevel=$_GET['userlevel'];
 		</br></br>
 		<a href="upload.php">上傳菜單照片</a>
 		</br></br>
-		<font size="5px" color="FF0000">聲明:請各位資網中心的高手不要攻擊我的網站，小的能力淺薄，這是方便大家訂餐的簡單網頁而已，還請各位高抬貴手</font>
-		</br></br></br></br>
+		<!--- <font size="5px" color="FF0000">聲明:請各位資網中心的高手不要攻擊我的網站，小的能力淺薄，這是方便大家訂餐的簡單網頁而已，還請各位高抬貴手</font>
+		</br></br> --->
+		</br></br>
 		
-		<div style="font-size:20px"><b><?php echo $today ?>的午餐團</b></div>
+		<div style="font-size:20px"><b><?php echo $today ?>的團購</b></div>
 		</br>
 		<?php
 		mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
@@ -59,6 +60,7 @@ $userlevel=$_GET['userlevel'];
 		$query = "SELECT * FROM lunchGroup order by id DESC"; 
 		// 傳回結果集
 		$result = mysql_query($query, $connection) or die(mysql_error());
+		$num=mysql_num_rows($result);
 		if ($result) {
 			while ( $row = mysql_fetch_assoc($result) ) {
 				$totalMoney=0;
@@ -70,7 +72,7 @@ $userlevel=$_GET['userlevel'];
 					<a href="list.php?groupId=<?php echo $row['id'] ?>"><?php echo $row['primaryName'] . "的團" ?></a>
 				</td>
 				<td>
-					<?php echo "今天中午吃" . "<font size=\"5\" color=\"FF0000\">" . $row['shopName'] . "</font>"; $shopName=$row['shopName']; ?>
+					<?php echo "今天中午訂" . "<font size=\"5\" color=\"FF0000\">" . $row['shopName'] . "</font>"; $shopName=$row['shopName']; ?>
 				</td>
 				<?php
 					if($userlevel==1) {
@@ -128,8 +130,10 @@ $userlevel=$_GET['userlevel'];
 							<td bgColor="#E6E6FA">
 								<?php 
 									echo $row1['userName'] . "&nbsp;" . $row1['foodCount'] . "個&nbsp;" . $row1['foodName'];
-									if($row1['userRemark']==1) { echo "&nbsp;加飯/麵"; }
-									else if($row1['userRemark']==-1) { echo "&nbsp;減飯/麵"; }
+									if($row1['userRemark']=="加飯/麵") { echo "&nbsp;加飯/麵"; }
+									if($row1['userRemark']=="減飯/麵") { echo "&nbsp;減飯/麵"; }
+									if($row1['userRemark']=="去冰") { echo "&nbsp;去冰"; }
+									if($row1['userRemark']=="少冰") { echo "&nbsp;少冰"; }
 								?>
 							</td>
 							<?php
@@ -158,6 +162,7 @@ $userlevel=$_GET['userlevel'];
 				while ( $row2 = mysql_fetch_assoc($result2) ) {
 					$temp=$row2['foodName'];
 					$totalCount=0;
+					$a=0;$b=0;$c=0;$d=0;$e=0;
 					$people="";
 					$query3 = "SELECT * FROM orderLog WHERE foodName = '$temp'";
 					// 傳回結果集
@@ -173,10 +178,21 @@ $userlevel=$_GET['userlevel'];
 								$people .= $row3['userName'] . "&nbsp;" . $row3['foodCount'] . "個" . ",";
 								$totalCount += $row3['foodCount'];
 								$totalMoney += $row3['foodCount'] * $row4['foodPrice'];
+								if($row3['userRemark']=="正常") { $a += $row3['foodCount']; };
+								if($row3['userRemark']=="加飯/麵") { $b += $row3['foodCount']; };
+								if($row3['userRemark']=="減飯/麵") { $c += $row3['foodCount']; };
+								if($row3['userRemark']=="去冰") { $d += $row3['foodCount']; };
+								if($row3['userRemark']=="少冰") { $e += $row3['foodCount']; };
 							};
 						};
 						if($totalCount!=0) {
-							echo "共" . $totalCount . "個&nbsp;" . $temp . "</br>";
+							echo "共" . $totalCount . "個&nbsp;" . $temp . "(";
+							if($a) { echo $a . "個正常,&nbsp;"; }
+							if($b) { echo $b . "個加,&nbsp;"; }
+							if($c) { echo $c . "個減"; }
+							if($d) { echo $d . "個去冰,&nbsp;"; }
+							if($e) { echo $e . "個少冰"; }
+							echo ")" . "<br/>";
 						};
 					};
 					if($people!="") { 
@@ -206,6 +222,7 @@ $userlevel=$_GET['userlevel'];
 				};
 				
 			};
+			if($num==0) { echo "今天還沒有人開團唷!考慮當一下主揪吧!";}
 			
 		}
 		?>
