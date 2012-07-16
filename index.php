@@ -129,11 +129,24 @@ $userlevel=$_GET['userlevel'];
 						<tr>
 							<td bgColor="#E6E6FA">
 								<?php 
+									$temp1=$row1['foodName'];
 									echo $row1['userName'] . "&nbsp;" . $row1['foodCount'] . "個&nbsp;" . $row1['foodName'];
 									if($row1['userRemark']=="加飯/麵") { echo "&nbsp;加飯/麵"; }
 									if($row1['userRemark']=="減飯/麵") { echo "&nbsp;減飯/麵"; }
 									if($row1['userRemark']=="去冰") { echo "&nbsp;去冰"; }
 									if($row1['userRemark']=="少冰") { echo "&nbsp;少冰"; }
+								?>
+							</td>
+							<td bgColor="#E6E6FA">
+								<?php 
+									$query6 = "SELECT foodPrice FROM menu WHERE shopName = '$shopName' AND foodName = '$temp1' ";
+									// 傳回結果集
+									$result6 = mysql_query($query6, $connection) or die(mysql_error());
+									if ($result6) {
+										while ( $row6 = mysql_fetch_assoc($result6) ) {
+											echo "共".$row1['foodCount']*$row6['foodPrice']."元";
+										};
+									};
 								?>
 							</td>
 							<?php
@@ -203,7 +216,7 @@ $userlevel=$_GET['userlevel'];
 			?>
 						<tr>
 							<td bgColor="#FFFACD">
-								<?php echo $temp; ?>
+								<?php echo $temp."&nbsp;".$row4['foodPrice']."元"; ?>
 							</td>
 							<td bgColor="#FFFACD">
 								<?php echo $people; ?>
