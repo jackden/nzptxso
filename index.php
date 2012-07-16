@@ -57,14 +57,14 @@ $userlevel=$_GET['userlevel'];
 		?>
 		
 		<?php
-		$query = "SELECT * FROM lunchGroup order by id DESC"; 
+		$query = "SELECT * FROM lunchGroup WHERE orderDate='$today' order by id DESC"; 
 		// 傳回結果集
 		$result = mysql_query($query, $connection) or die(mysql_error());
 		$num=mysql_num_rows($result);
 		if ($result) {
 			while ( $row = mysql_fetch_assoc($result) ) {
 				$totalMoney=0;
-				if ($row['orderDate']==$today) {
+				$allCount=0;
 		?>
 		<table>
 			<tr>
@@ -161,6 +161,7 @@ $userlevel=$_GET['userlevel'];
 			if ($result2) {
 				while ( $row2 = mysql_fetch_assoc($result2) ) {
 					$temp=$row2['foodName'];
+					
 					$totalCount=0;
 					$a=0;$b=0;$c=0;$d=0;$e=0;
 					$people="";
@@ -177,6 +178,7 @@ $userlevel=$_GET['userlevel'];
 							if ($row3['groupId']==$row['id']) {
 								$people .= $row3['userName'] . "&nbsp;" . $row3['foodCount'] . "個" . ",";
 								$totalCount += $row3['foodCount'];
+								
 								$totalMoney += $row3['foodCount'] * $row4['foodPrice'];
 								if($row3['userRemark']=="正常") { $a += $row3['foodCount']; };
 								if($row3['userRemark']=="加飯/麵") { $b += $row3['foodCount']; };
@@ -185,12 +187,13 @@ $userlevel=$_GET['userlevel'];
 								if($row3['userRemark']=="少冰") { $e += $row3['foodCount']; };
 							};
 						};
+						$allCount += $totalCount;
 						if($totalCount!=0) {
 							echo "共" . $totalCount . "個&nbsp;" . $temp . "(";
-							if($a) { echo $a . "個正常,&nbsp;"; }
-							if($b) { echo $b . "個加,&nbsp;"; }
+							if($a) { echo $a . "個正常"; echo ($b+$c)?",&nbsp":"";}
+							if($b) { echo $b . "個加"; echo ($c)?",&nbsp;":""; }
 							if($c) { echo $c . "個減"; }
-							if($d) { echo $d . "個去冰,&nbsp;"; }
+							if($d) { echo $d . "個去冰"; echo ($e)?",&nbsp;":""; }
 							if($e) { echo $e . "個少冰"; }
 							echo ")" . "<br/>";
 						};
@@ -211,7 +214,7 @@ $userlevel=$_GET['userlevel'];
 				};
 				
 				if($totalMoney!=0) {
-					echo "共" . "<font size=\"5\" color=\"#0000FF\">" . $totalMoney . "</font>" . "元";
+					echo "共" . $allCount . "個,共<font size=\"5\" color=\"#0000FF\">" . $totalMoney . "</font>" . "元";
 				};
 			};
 			?>
@@ -219,8 +222,6 @@ $userlevel=$_GET['userlevel'];
 		</table>
 		</br>
 		<?php
-				};
-				
 			};
 			if($num==0) { echo "今天還沒有人開團唷!考慮當一下主揪吧!";}
 			
