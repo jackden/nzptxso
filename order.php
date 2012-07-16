@@ -28,6 +28,7 @@ if(!empty($_SERVER['HTTP_CLIENT_IP'])){
 <?php
 	date_default_timezone_set('Asia/Taipei');
 	$today=date("Y-m-d");
+	$now=date("H:i");
 ?>
 
 <?php
@@ -95,7 +96,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						
 						$orderDate=$today;
 						
-						$query3 = "SELECT shopName FROM lunchGroup WHERE id = '$groupId' "; 
+						$query3 = "SELECT shopName, overTime FROM lunchGroup WHERE id = '$groupId' "; 
 						// 傳回結果集
 						$result3 = mysql_query($query3, $connection) or die(mysql_error());
 						if ($result3) { $row3 = mysql_fetch_assoc($result3); }
@@ -104,6 +105,16 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						$query1 = "SELECT * FROM menu WHERE shopName = '$shopName' "; 
 						// 傳回結果集
 						$result1 = mysql_query($query1, $connection) or die(mysql_error());
+						
+						$overTime=explode(":",$row3['overTime']);
+						$nowTime=explode(":",$now);
+						
+						if( ($nowTime[0]<$overTime[0]) || ($nowTime[0]==$overTime[0] && $nowTime[1]<$overTime[1]) ) {
+						}
+						else {
+							header(sprintf("Location: %s", $_SESSION['PrevPage']));
+						}
+						
 					?>
 					<td>
 						<?php
