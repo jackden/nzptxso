@@ -142,30 +142,21 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5"  /></td>
 				</tr>
 				<tr>
-					<td><center>飯量:</center></td>
+					<td><center>備註:</center></td>
 					<td>
 						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
 						<input type="radio" id="userRemark" name="userRemark" value="加飯/麵"><label>加飯/麵</label>
-						<input type="radio" id="userRemark" name="userRemark" value="減飯/麵"><label>減飯/麵</label>
+						<input type="radio" id="userRemark" name="userRemark" value="減飯/麵"><label>減飯/麵</label><br/>
+						<!--- <input type="radio" id="userRemark" name="userRemark" value="去冰"><label>去冰</label>
+						<input type="radio" id="userRemark" name="userRemark" value="少冰"><label>少冰</label> --->
 					</td>
 				</tr>
 				<!--- <tr>
-					<td><center>溫度:</center></td>
-					<td>
-						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
-						<input type="radio" id="userRemark" name="userRemark" value="去冰"><label>去冰</label>
-						<input type="radio" id="userRemark" name="userRemark" value="微冰"><label>微冰</label>
-						<input type="radio" id="userRemark" name="userRemark" value="少冰"><label>少冰</label>
-						<input type="radio" id="userRemark" name="userRemark" value="溫"><label>溫</label>
-						<input type="radio" id="userRemark" name="userRemark" value="熱"><label>熱</label>
-					</td>
-				</tr>
-				<tr>
 					<td><center>甜度:</center></td>
 					<td>
 						<input type="radio" id="userRemark1" name="userRemark1" value="正常" checked="checked"><label>正常</label>
 						<input type="radio" id="userRemark1" name="userRemark1" value="無糖"><label>無糖</label>
-						<input type="radio" id="userRemark1" name="userRemark1" value="微糖"><label>微糖(3分)</label>
+						<input type="radio" id="userRemark1" name="userRemark1" value="微糖"><label>微糖(3分)</label><br/>
 						<input type="radio" id="userRemark1" name="userRemark1" value="半糖"><label>半糖(5分)</label>
 						<input type="radio" id="userRemark1" name="userRemark1" value="少糖"><label>少糖(8分)</label>
 					</td>
