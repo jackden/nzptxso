@@ -199,6 +199,7 @@ $userlevel=$_GET['userlevel'];
 						};
 					};
 					if($people!="") { 
+						$people=substr($people,'0','-1');
 			?>
 						<tr>
 							<td bgColor="#FFFACD">
