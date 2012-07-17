@@ -18,4 +18,13 @@ function CheckFields()
 		document.getElementById("shopPhone").focus();
 		return false;
 	}
+	
+	// 檢查『外送條件』欄位
+	var fieldvalue = document.getElementById("deliveryCondition").value;
+	if (fieldvalue == "") 
+	{
+		alert("『外送條件』欄位不可以是空白!");
+		document.getElementById("deliveryCondition").focus();
+		return false;
+	}
 }

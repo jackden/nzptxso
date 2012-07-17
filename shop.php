@@ -32,10 +32,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
 	
 	// 在notice資料表內插入一筆新的紀錄
-	$query = sprintf("INSERT INTO shop (shopName, shopPhone, userIp) 
-	VALUES (%s, %s, %s)", 
+	$query = sprintf("INSERT INTO shop (shopName, shopPhone, deliveryCondition, userIp) 
+	VALUES (%s, %s, %s, %s)", 
 	GetSQLValue($_POST['shopName'], "text"), GetSQLValue($_POST['shopPhone'], "text"),
-	GetSQLValue($userIp, "text") );
+	GetSQLValue($_POST['deliveryCondition'], "text"), GetSQLValue($userIp, "text") );
 		
 	// 傳回結果集
 	$result = mysql_query($query, $connection) or die(mysql_error());
@@ -67,6 +67,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				<tr>
 					<td><center>店家電話:</center></td>
 					<td><input name="shopPhone" id="shopPhone" type="text" maxlength="30" size="25" /></td>
+				</tr>
+				<tr>
+					<td><center>外送條件:</center></td>
+					<td><input name="deliveryCondition" id="deliveryCondition" type="text" maxlength="30" size="25" /></td>
 				</tr>
 				
 				

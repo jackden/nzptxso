@@ -109,11 +109,16 @@ $userlevel=$_GET['userlevel'];
 				?>
 				<td>
 					<?php
-					$query5 = "SELECT shopPhone FROM shop WHERE shopName = '$shopName'";
+					$query5 = "SELECT shopPhone,deliveryCondition FROM shop WHERE shopName = '$shopName'";
 					// 傳回結果集
 					$result5 = mysql_query($query5, $connection) or die(mysql_error());
 					if ($result5) { $row5 = mysql_fetch_assoc($result5); }
 					echo "電話:" . "<font size=\"4\" color=\"FF0FFF\">" . $row5['shopPhone'] . "</font>";
+					
+					if($row5['deliveryCondition'])
+					{
+						echo "<br/>外送條件:"."<font size=\"4\" color=\"#228B22\">".$row5['deliveryCondition']. "</font>";
+					};
 					?>
 				</td>
 			</tr>
