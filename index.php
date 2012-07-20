@@ -43,15 +43,15 @@ $userlevel=$_GET['userlevel'];
 	
 	<body>
 		<a href="create.php">我要當主揪</a>
-		</br></br>
+		<br/><br/>
 		<a href="upload.php">上傳菜單照片</a>
-		</br></br>
+		<br/><br/>
 		<!--- <font size="5px" color="FF0000">聲明:請各位資網中心的高手不要攻擊我的網站，小的能力淺薄，這是方便大家訂餐的簡單網頁而已，還請各位高抬貴手</font>
-		</br></br> --->
-		</br></br>
+		<br/><br/> --->
+		<br/><br/>
 		
 		<div style="font-size:20px"><b><?php echo $today ?>的團購</b></div>
-		</br>
+		<br/>
 		<?php
 		mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
 		?>
@@ -239,7 +239,7 @@ $userlevel=$_GET['userlevel'];
 			?>
 			
 		</table>
-		</br>
+		<br/>
 		<?php
 			};
 			if($num==0) { echo "今天還沒有人開團唷!考慮當一下主揪吧!";}

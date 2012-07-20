@@ -75,7 +75,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					<td><input name="primaryName" id="primaryName" type="text" maxlength="30" size="25" /></td>
 				</tr>
 				<tr>
-					<td></br></td>
+					<td><br/></td>
 				</tr>
 				<tr>
 					<td> </td>
@@ -99,7 +99,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						if ($result) {
 							while ( $row = mysql_fetch_assoc($result) ) {
 						?>
-								<input type="radio" id="shopName" name="shopName" value="<?php echo $row['shopName'] ?>"><label><?php echo $row['shopName'] ."&nbsp; 電話號碼:". $row['shopPhone'] ?></label></br>
+								<input type="radio" id="shopName" name="shopName" value="<?php echo $row['shopName'] ?>"><label><?php echo $row['shopName'] ."&nbsp; 電話號碼:". $row['shopPhone'] ?></label><br/>
 						<?php
 							}
 							if($num==0)

@@ -81,7 +81,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 			輸入要增加幾筆菜單
 			<input name="menuCount" id="menuCount" type="int" maxlength="30" size="5" />
 			<input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" />
-			</br><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a>
+			<br/><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a>
 		</form>
 		<?php
 			};

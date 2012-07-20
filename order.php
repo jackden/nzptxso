@@ -136,7 +136,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 								<?php
 									}
 								?>
-								</br>
+								<br/>
 						<?php
 							}
 							if(!$row2)
