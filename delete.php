@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 
 
 // 前一個網頁
-$_SESSION['PrevPage'] = "index.php?userverlevel=1";
+$_SESSION['PrevPage'] = "index.php";
 
 $userlevel=0;
 $userlevel=$_GET['userlevel'];
