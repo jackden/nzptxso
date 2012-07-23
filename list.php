@@ -14,10 +14,11 @@ if(!$groupId) {header(sprintf("Location: %s", $_SESSION['PrevPage']));}
 ?>
 
 <?php
+$isPayed=$_POST["isPayed"];
 //**********************************//
 // 在orderLog資料表內插入一筆新的紀錄
 //**********************************//
-if (($_POST["insert"] == "49821032")) 
+if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032")) 
 {
 	// 選擇 MySQL 資料庫lunch
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
