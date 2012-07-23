@@ -44,6 +44,7 @@ if (($_POST["insert"] == "49821032"))
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-tw" xml:lang="zh-tw">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta content='10' http-equiv='Refresh'/>
 		<title>統計頁面</title>
 		
 		<style>
@@ -63,8 +64,7 @@ if (($_POST["insert"] == "49821032"))
 	
 	<body>
 	<form method="post" action="<?php htmlentities($_SERVER['PHP_SELF']); ?>">
-		<table style="position:relative; margin-left:auto; margin-right:auto; width:40%; ">
-		
+		<table style="position:relative; margin-left:auto; margin-right:auto; width:50%; ">
 			<tr>
 				<td>
 					訂單
@@ -136,7 +136,7 @@ if (($_POST["insert"] == "49821032"))
 		
 		<div align="center" style="margin-top:10px; margin-right:100px;">
 			主揪專屬密碼：<input name="insert" id="insert" type="password" />
-			<input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" />
+			<input id="send" name="submit" type="submit" value="送出" />
 		</div><br/>
 
 	</form>
