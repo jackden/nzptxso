@@ -48,7 +48,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 		<meta content='60' http-equiv='Refresh'/>
 		<title>統計頁面</title>
 		
-		<style>
+		<style type="text/css">
 			table {  
 			  border: 1px solid #000000;  
 			  border-collapse: collapse;  
@@ -58,6 +58,21 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 			tr, td {  
 			  border: 1px solid #000000;  
 			}  
+			.left {   
+				float:left;   
+				display:inline;   
+				width:33%;
+			}   
+			.center{   
+				float:left;   
+				display:inline;   
+				width:33%;
+			}   
+			.right{   
+				float:right;   
+				display:inline;   
+				width:33%;
+			}   
 		</style>
 	</head>
 
@@ -76,6 +91,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 			</tr>
 			<?php
 			mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
+			$totalPrice=0;
 			$hasPayed=0;
 			$query1 = "SELECT * FROM orderLog order by foodName"; 
 			// 傳回結果集
@@ -108,6 +124,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 								?>
 							</td>
 							<?php
+								$totalPrice += $row1['foodCount']*$row3['foodPrice'];
 								if($row1['isPayed']==0) {
 							?>
 							<td>
@@ -134,14 +151,14 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 			}
 			?>
 			<tr>
-				<td>
-					已付
-				</td>
-				<td>
-					<?php echo $hasPayed."元"; ?>
+				<td colspan='2'>
+				<div>
+					<div class="left">應付：<?php echo $totalPrice."元"; ?></div>
+					<div class="center">已付：<?php echo $hasPayed."元"; ?></div>
+					<div class="right">未付：<?php echo ($totalPrice-$hasPayed)."元"; ?></div>
+				</div>
 				</td>
 			</tr>
-
 		</table>
 
 		
