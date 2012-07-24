@@ -45,7 +45,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-tw" xml:lang="zh-tw">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta content='10' http-equiv='Refresh'/>
+		<meta content='60' http-equiv='Refresh'/>
 		<title>統計頁面</title>
 		
 		<style>
@@ -76,7 +76,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 			</tr>
 			<?php
 			mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
-			
+			$hasPayed=0;
 			$query1 = "SELECT * FROM orderLog order by foodName"; 
 			// 傳回結果集
 			$result1 = mysql_query($query1, $connection) or die(mysql_error());
@@ -118,6 +118,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 							?>
 							<?php
 								if($row1['isPayed']!=0) {
+									$hasPayed += $row1['foodCount']*$row3['foodPrice'];
 							?>
 							<td>
 								<input type="checkbox" id="isPayed" name="isPayed[]" checked disabled><?php echo $row1['foodCount']*$row3['foodPrice']."元"; ?>
@@ -125,12 +126,21 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "49821032"))
 							<?php
 								}
 							?>
+							
 						</tr>
 			<?php
 					};
 				};
 			}
 			?>
+			<tr>
+				<td>
+					已付
+				</td>
+				<td>
+					<?php echo $hasPayed."元"; ?>
+				</td>
+			</tr>
 
 		</table>
 
