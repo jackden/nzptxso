@@ -30,6 +30,7 @@ if(!empty($_SERVER['HTTP_CLIENT_IP'])){
 
 <?php
 $foodName=$_POST["foodName"];
+$foodPrice=$_POST["foodPrice"];
 //**********************************//
 // 在menu資料表內插入一筆新的紀錄
 //**********************************//
