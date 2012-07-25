@@ -149,11 +149,17 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					</td>
 				</tr>
 				<tr>
+					<td><center>備註:</center></td>
+					<td>
+						<input type="text" id="userRemark1" name="userRemark1" size="25" onfocus="if (this.value=='ex:飯or麵,牛or羊') this.value='';" onblur="if (this.value=='') this.value='ex:飯or麵,牛or羊';" value="ex:飯or麵,牛or羊" />
+					</td>
+				</tr>
+				<tr>
 					<td><center>數量:</center></td>
 					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5"  /></td>
 				</tr>
 				<tr>
-					<td><center>備註:</center></td>
+					<td><center>飯量:</center></td>
 					<td>
 						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
 						<input type="radio" id="userRemark" name="userRemark" value="加飯/麵"><label>加飯/麵</label>

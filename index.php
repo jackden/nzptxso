@@ -141,6 +141,7 @@ $userlevel=$_GET['userlevel'];
 									if($row1['userRemark']=="減飯/麵") { echo "&nbsp;減飯/麵"; }
 									if($row1['userRemark']=="去冰") { echo "&nbsp;去冰"; }
 									if($row1['userRemark']=="少冰") { echo "&nbsp;少冰"; }
+									echo "&nbsp;<font size=\"4\" color=\"#FF4500\">".$row1['userRemark1']."</font>";
 								?>
 							</td>
 							<td bgColor="#E6E6FA">
