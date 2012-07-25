@@ -80,7 +80,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 			<table>
 				<tr>
 					<td><center>姓名:</center></td>
-					<td><input name="userName" id="userName" type="text" maxlength="10" size="25" /></td>
+					<td><input name="userName" id="userName" type="text" maxlength="10" size="25" title="請輸入姓名" /></td>
 				</tr>
 				<tr>
 					<td> </td>
@@ -151,12 +151,12 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				<tr>
 					<td><center>備註:</center></td>
 					<td>
-						<input type="text" id="userRemark1" name="userRemark1" size="25" onfocus="if (this.value=='ex:飯or麵,牛or羊') this.value='';" onblur="if (this.value=='') this.value='ex:飯or麵,牛or羊';" value="ex:飯or麵,牛or羊" />
+						<input type="text" id="userRemark1" name="userRemark1" size="25" title="ex:飯or麵,牛or羊,辣度" />
 					</td>
 				</tr>
 				<tr>
 					<td><center>數量:</center></td>
-					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5"  /></td>
+					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5" title="請輸入數量" /></td>
 				</tr>
 				<tr>
 					<td><center>飯量:</center></td>
