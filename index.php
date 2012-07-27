@@ -43,6 +43,7 @@ $userlevel=$_GET['userlevel'];
 	
 	
 	<body>
+	
 		<a href="create.php">我要當主揪</a>
 		<br/><br/>
 		<a href="upload.php">上傳菜單照片</a>
@@ -50,8 +51,8 @@ $userlevel=$_GET['userlevel'];
 		<!--- <font size="5px" color="FF0000">聲明:請各位資網中心的高手不要攻擊我的網站，小的能力淺薄，這是方便大家訂餐的簡單網頁而已，還請各位高抬貴手</font>
 		<br/><br/> --->
 		<br/><br/>
-		
-		<div style="font-size:20px"><b><?php echo $today ?>的團購</b></div>
+		<div style="float:left;width:55%">
+		<h2><?php echo $today ?>的團購</h2>
 		<br/>
 		<?php
 		mysql_select_db('lunch', $connection) or die('資料庫lunch不存在'); 
@@ -248,7 +249,44 @@ $userlevel=$_GET['userlevel'];
 			
 		}
 		?>
+	</div>
+	
+	<div style="float:right;width:45%">
+		<h2>更新紀錄</h2>
+		<p style="text-align:right;"><a href="changelog.php">所有紀錄…</a></p>
 		
+		<ul>
+		<?php
+			$query7 = "SELECT * FROM changeLog order by changeDate DESC limit 0,10"; 
+			// 傳回結果集
+			$result7 = mysql_query($query7, $connection) or die(mysql_error());
+			$num7=mysql_num_rows($result7);
+			if ($result7) {
+				while ( $row7 = mysql_fetch_assoc($result7) ) {
+					$textlen=60;  //例如:utf-8的中文字占3byte,若要顯示20個字元,則$textlen=60(60/3=20)
+					$str=$row7['changeContent'];
+		?>
+		
+			<li>
+				<span><?php echo $row7['changeDate']; ?></span>
+				<span><?php if (strlen($str)>$textlen){
+								for($i = 0;$i < $textlen;$i++){
+									$ch= substr($str,$i,1);
+									if(ord($ch) > 127) $i+=2;
+								}
+								$str1 = substr($str,0,$i);    
+								echo $str1."...";        //如果字串超出20個字，就取前20個字並加...字串     
+							}
+							else
+								echo $str;　//如果字串未超過20個字,則顯示所有的字串 ?>
+				</span>
+			</li>
+		<?php
+				}
+			}
+		?>
+		</ul>
+	</div>
 		
 		
 	</body>
