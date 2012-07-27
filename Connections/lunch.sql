@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主機: localhost
--- 建立日期: Jul 25, 2012, 04:34 AM
+-- 建立日期: Jul 27, 2012, 05:07 AM
 -- 伺服器版本: 5.0.45
 -- PHP 版本: 5.2.3
 
@@ -12,6 +12,34 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 
 -- 資料庫: `lunch`
 -- 
+
+-- --------------------------------------------------------
+
+-- 
+-- 資料表格式： `changelog`
+-- 
+
+CREATE TABLE `changelog` (
+  `id` int(11) NOT NULL auto_increment,
+  `changeContent` text NOT NULL,
+  `changeDate` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+-- 
+-- 列出以下資料庫的數據： `changelog`
+-- 
+
+INSERT INTO `changelog` VALUES (1, '第一版誕生', '2012-07-05');
+INSERT INTO `changelog` VALUES (2, '新增加飯、減飯選項', '2012-07-11');
+INSERT INTO `changelog` VALUES (3, '在首頁新增訂購資訊，以方便訂購', '2012-07-15');
+INSERT INTO `changelog` VALUES (4, '新增店家外送條件', '2012-07-16');
+INSERT INTO `changelog` VALUES (5, '讓首頁會自動重新整理', '2012-07-19');
+INSERT INTO `changelog` VALUES (6, '新增紀錄是否已付款功能，使用者可透過主揪的團的連結進入觀看自己是否已付款', '2012-07-20');
+INSERT INTO `changelog` VALUES (7, '紀錄付款功能頁面，新增應付、已付、未付', '2012-07-23');
+INSERT INTO `changelog` VALUES (8, '在訂購頁面，新增備註欄位', '2012-07-24');
+INSERT INTO `changelog` VALUES (9, '新增更新記錄功能', '2012-07-27');
+INSERT INTO `changelog` VALUES (10, '飽足牛肉麵從75改為80元', '2012-07-27');
 
 -- --------------------------------------------------------
 
@@ -64,7 +92,7 @@ INSERT INTO `menu` VALUES (4, '集賢館外送便當', '鱈魚飯', 60, NULL, NU
 INSERT INTO `menu` VALUES (5, '集賢館外送便當', '焢肉飯', 60, NULL, NULL, NULL, NULL, '');
 INSERT INTO `menu` VALUES (6, '集賢館外送便當', '燒肉飯', 60, NULL, NULL, NULL, NULL, '');
 INSERT INTO `menu` VALUES (7, '集賢館外送便當', '經濟飯', 50, NULL, NULL, NULL, NULL, '');
-INSERT INTO `menu` VALUES (8, '飽足', '牛肉麵', 75, NULL, NULL, NULL, NULL, '');
+INSERT INTO `menu` VALUES (8, '飽足', '牛肉麵', 80, NULL, NULL, NULL, NULL, '');
 INSERT INTO `menu` VALUES (9, '飽足', '鮮菇麵', 55, NULL, NULL, NULL, NULL, '');
 INSERT INTO `menu` VALUES (10, '飽足', '酸辣麵', 55, NULL, NULL, NULL, NULL, '');
 INSERT INTO `menu` VALUES (11, '飽足', '榨菜肉絲麵', 50, NULL, NULL, NULL, NULL, '');
