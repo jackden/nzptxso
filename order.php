@@ -151,7 +151,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				<tr>
 					<td><center>備註:</center></td>
 					<td>
-						<input type="text" id="userRemark1" name="userRemark1" size="25" title="ex:飯or麵,牛or羊,辣度" />
+						<input type="text" id="userRemark1" name="userRemark1" maxlength="10" size="25" title="ex:飯or麵,牛or羊,辣度" />
 					</td>
 				</tr>
 				<tr>
