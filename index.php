@@ -29,6 +29,8 @@ $userlevel=$_GET['userlevel'];
 		<meta content='10' http-equiv='Refresh'/>
 		<title>訂午餐系統</title>
 		
+		<script type="text/javascript" src="JavaScript/ellipsis.js"></script>
+		
 		<style>
 			table {  
 			  border: 1px solid #000000;  
@@ -36,7 +38,15 @@ $userlevel=$_GET['userlevel'];
 			}  
 			tr, td {  
 			  border: 1px solid #000000;  
-			}  
+			}
+			
+			.ellipsis {
+				display: block; /* or inline-block 必須是 block 或 inline-block*/
+				white-space: nowrap;
+				overflow: hidden;
+				-o-text-overflow: ellipsis;    /* Opera */
+				text-overflow:    ellipsis;    /* IE, Safari (WebKit) */
+			}
 		</style>
 	</head>
 
@@ -263,23 +273,11 @@ $userlevel=$_GET['userlevel'];
 			$num7=mysql_num_rows($result7);
 			if ($result7) {
 				while ( $row7 = mysql_fetch_assoc($result7) ) {
-					$textlen=57;  //例如:utf-8的中文字占3byte,若要顯示20個字元,則$textlen=60(60/3=20)
-					$str=$row7['changeContent'];
 		?>
 		
-			<li>
+			<li class="ellipsis">
 				<span><?php echo $row7['changeDate']; ?></span>
-				<span><?php if (strlen($str)>$textlen){
-								for($i = 0;$i < $textlen;$i++){
-									$ch= substr($str,$i,1);
-									if(ord($ch) > 127) $i+=2;
-								}
-								$str1 = substr($str,0,$i);    
-								echo $str1."...";        //如果字串超出20個字，就取前20個字並加...字串     
-							}
-							else
-								echo $str;　//如果字串未超過20個字,則顯示所有的字串 ?>
-				</span>
+				<span><?php echo $row7['changeContent']; ?></span>
 			</li>
 		<?php
 				}
