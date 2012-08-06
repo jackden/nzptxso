@@ -96,7 +96,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						
 						$orderDate=$today;
 						
-						$query3 = "SELECT shopName, overTime FROM lunchGroup WHERE id = '$groupId' "; 
+						$query3 = "SELECT shopName, orderDate, overTime FROM lunchGroup WHERE id = '$groupId' "; 
 						// 傳回結果集
 						$result3 = mysql_query($query3, $connection) or die(mysql_error());
 						if ($result3) { $row3 = mysql_fetch_assoc($result3); }
@@ -106,10 +106,10 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						// 傳回結果集
 						$result1 = mysql_query($query1, $connection) or die(mysql_error());
 						
-						$overTime=explode(":",$row3['overTime']);
-						$nowTime=explode(":",$now);
+						$nowDateTime=$today." ".$now;
+						$orderDateTime=$row3['orderDate']." ".$row3['overTime'];
 						
-						if( ($nowTime[0]<$overTime[0]) || ($nowTime[0]==$overTime[0] && $nowTime[1]<$overTime[1]) ) {
+						if(date("Y-m-d H:i",strtotime($nowDateTime))<date("Y-m-d H:i",strtotime($orderDateTime))) {
 						}
 						else {
 							header(sprintf("Location: %s", $_SESSION['PrevPage']));
