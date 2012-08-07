@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主機: localhost
--- 建立日期: Jul 27, 2012, 05:07 AM
+-- 建立日期: Aug 07, 2012, 03:29 AM
 -- 伺服器版本: 5.0.45
 -- PHP 版本: 5.2.3
 
@@ -24,7 +24,7 @@ CREATE TABLE `changelog` (
   `changeContent` text NOT NULL,
   `changeDate` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 -- 
 -- 列出以下資料庫的數據： `changelog`
@@ -40,6 +40,9 @@ INSERT INTO `changelog` VALUES (7, '紀錄付款功能頁面，新增應付、�
 INSERT INTO `changelog` VALUES (8, '在訂購頁面，新增備註欄位', '2012-07-24');
 INSERT INTO `changelog` VALUES (9, '新增更新記錄功能', '2012-07-27');
 INSERT INTO `changelog` VALUES (10, '飽足牛肉麵從75改為80元', '2012-07-27');
+INSERT INTO `changelog` VALUES (11, '飽足8月無營業，吃不到好吃的悶雞了', '2012-08-06');
+INSERT INTO `changelog` VALUES (12, '在開團選擇店家時，可以新增菜單', '2012-08-07');
+INSERT INTO `changelog` VALUES (13, '新增店家:好佳', '2012-08-07');
 
 -- --------------------------------------------------------
 
@@ -79,7 +82,7 @@ CREATE TABLE `menu` (
   `filetype` varchar(50) default NULL,
   `userIp` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=294 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=377 ;
 
 -- 
 -- 列出以下資料庫的數據： `menu`
@@ -378,6 +381,89 @@ INSERT INTO `menu` VALUES (290, '花蓮香扁食', '爌肉配菜飯', 65, NULL, 
 INSERT INTO `menu` VALUES (291, '花蓮香扁食', '腿排配菜飯', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
 INSERT INTO `menu` VALUES (292, '花蓮香扁食', '紅燒牛腩飯', 80, NULL, NULL, NULL, NULL, '10.0.2.2');
 INSERT INTO `menu` VALUES (293, '花蓮香扁食', '甘蔗燻雞腿飯', 80, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (294, '好佳', '酸辣雞排 套餐', 80, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (295, '好佳', '蘑菇(豬/雞)排 套餐', 80, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (296, '好佳', '咖哩(豬/雞)排 套餐', 80, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (297, '好佳', '蠔油(豬/雞)肉 套餐', 75, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (298, '好佳', '韓式泡菜 套餐', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (299, '好佳', '香酥(豬/雞)排 套餐', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (300, '好佳', '滷雞腿 套餐', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (301, '好佳', '泡打飯 套餐', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (302, '好佳', '雞肉飯 套餐', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (303, '好佳', '滷肉飯 套餐', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (304, '好佳', '今日特餐', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (305, '好佳', '沙茶(牛/羊)肉 蓋飯', 75, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (306, '好佳', '沙茶(豬/雞)肉 蓋飯', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (307, '好佳', '蠔油(牛/羊)肉 蓋飯', 75, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (308, '好佳', '蠔油(豬/雞)肉 蓋飯', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (309, '好佳', '泡菜(牛/羊)肉 拌飯', 75, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (310, '好佳', '泡菜(豬/雞)肉 拌飯', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (311, '好佳', '泡菜拌飯 過邊素', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (312, '好佳', '素菜 蓋飯', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (313, '好佳', '什錦海鮮 炒油麵/炒拉麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (314, '好佳', '香辣蝦仁 炒飯/炒油麵/炒拉麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (315, '好佳', '沙茶牛/羊 炒飯/炒油麵/炒拉麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (316, '好佳', '泡菜牛肉 炒飯/炒油麵/炒拉麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (317, '好佳', '鹹蛋超人 炒飯/炒油麵/炒拉麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (318, '好佳', '三色蛋 炒飯', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (319, '好佳', '皮蛋火腿 炒飯', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (320, '好佳', '泡菜(豬/雞)肉 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (321, '好佳', '香辣(豬/雞)肉 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (322, '好佳', '榨菜肉絲 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (323, '好佳', '腐乳雞肉 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (324, '好佳', '培根蛋一家親 炒飯', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (325, '好佳', '香腸 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (326, '好佳', '培根 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (327, '好佳', '宮保雞丁 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (328, '好佳', '三杯雞 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (329, '好佳', '蝦仁 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (330, '好佳', '茄汁肉絲 炒飯/炒油麵/炒拉麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (331, '好佳', '肉絲 炒飯/炒油麵/炒拉麵', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (332, '好佳', '雞肉 炒飯/炒油麵/炒拉麵', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (333, '好佳', '茄汁 炒飯/炒油麵/炒拉麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (334, '好佳', '火腿 炒飯/炒油麵/炒拉麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (335, '好佳', '蛋 炒飯/炒油麵/炒拉麵', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (336, '好佳', '素腐乳 炒飯/炒油麵/炒拉麵', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (337, '好佳', '素菜 炒飯/炒油麵/炒拉麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (338, '全記', '豬肝湯(小)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (339, '全記', '豬肝湯(大)', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (340, '全記', '蛤蠣湯(小)', 35, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (341, '全記', '蛤蠣湯(大)', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (342, '好佳', '什錦海鮮麵', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (343, '好佳', '咖哩烏龍麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (344, '好佳', '招牌排骨麵', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (345, '好佳', '番茄雞肉麵', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (346, '好佳', '榨菜肉絲 湯麵', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (347, '好佳', '韓式泡菜 湯麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (348, '好佳', '沙茶雞絲麵', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (349, '好佳', '蔬菜 湯麵', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (350, '好佳', '肉燥 湯麵(黃麵/白麵)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (351, '好佳', '肉燥(米粉/冬粉)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (352, '好佳', '麻油麵線', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (353, '好佳', '麻油麵線(大)', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (354, '好佳', '招牌麻辣乾麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (355, '好佳', '招牌泡打乾麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (356, '好佳', '麻辣炸醬乾麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (357, '好佳', '炸醬乾麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (358, '好佳', '雞絲拌麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (359, '好佳', '雙炸乾麵', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (360, '好佳', '肉燥乾(黃/白)麵', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (361, '好佳', '傻瓜乾麵', 35, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (362, '好佳', '高麗菜/韭菜 水餃 (10粒)', 35, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (363, '好佳', '高麗菜/韭菜 水餃 (16粒)', 55, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (364, '好佳', '黃金煎餃 不加蛋 (10粒)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (365, '好佳', '黃金煎餃 不加蛋 (16粒)', 60, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (366, '好佳', '黃金煎餃 加蛋 (10粒)', 50, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (367, '好佳', '黃金煎餃 加蛋 (16粒)', 70, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (368, '好佳', '泡打飯(小)', 35, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (369, '好佳', '泡打飯(大)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (370, '好佳', '雞肉飯(小)', 35, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (371, '好佳', '雞肉飯(大)', 40, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (372, '好佳', '肉燥飯(小)', 25, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (373, '好佳', '肉燥飯(大)', 30, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (374, '好佳', '滑蛋泡菜 (豬/雞)排燴飯', 75, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (375, '好佳', '蘑菇 (豬/雞)肉 燴飯', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
+INSERT INTO `menu` VALUES (376, '好佳', '咖哩 (豬/雞)肉 燴飯', 65, NULL, NULL, NULL, NULL, '10.0.2.2');
 
 -- --------------------------------------------------------
 
@@ -417,15 +503,16 @@ CREATE TABLE `shop` (
   `deliveryCondition` text NOT NULL,
   `userIp` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- 
 -- 列出以下資料庫的數據： `shop`
 -- 
 
-INSERT INTO `shop` VALUES (1, '集賢館外送便當', '03-8630005', '5份以上', '');
+INSERT INTO `shop` VALUES (1, '集賢館外送便當', '03-8630005 / 0978-099378', '5份以上', '');
 INSERT INTO `shop` VALUES (2, '飽足', '03-8663887', '300元以上', '');
 INSERT INTO `shop` VALUES (3, '竹緹小舎', '03-8663772', '5份以上', '');
 INSERT INTO `shop` VALUES (4, '大上海', '03-8661550', '300元以上', '');
-INSERT INTO `shop` VALUES (5, '全記', '03-8662873', '好像是至少四份', '10.0.2.2');
+INSERT INTO `shop` VALUES (5, '全記', '03-8662873', '300元以上', '10.0.2.2');
 INSERT INTO `shop` VALUES (6, '花蓮香扁食', '(03)866-3668', '400元以上', '10.0.2.2');
+INSERT INTO `shop` VALUES (7, '好佳', '03-8662708', '250元以上', '10.0.2.2');
