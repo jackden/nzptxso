@@ -148,8 +148,8 @@ $userlevel=$_GET['userlevel'];
 								<?php 
 									$temp1=$row1['foodName'];
 									echo $row1['userName'] . "&nbsp;" . $row1['foodCount'] . "個&nbsp;" . $row1['foodName'];
-									if($row1['userRemark']=="加飯/麵") { echo "&nbsp;加飯/麵"; }
-									if($row1['userRemark']=="減飯/麵") { echo "&nbsp;減飯/麵"; }
+									if($row1['userRemark']=="加") { echo "&nbsp;加"; }
+									if($row1['userRemark']=="減") { echo "&nbsp;減"; }
 									if($row1['userRemark']=="去冰") { echo "&nbsp;去冰"; }
 									if($row1['userRemark']=="少冰") { echo "&nbsp;少冰"; }
 									echo "&nbsp;<font size=\"4\" color=\"#FF4500\">".$row1['userRemark1']."</font>";
@@ -212,8 +212,8 @@ $userlevel=$_GET['userlevel'];
 								
 								$totalMoney += $row3['foodCount'] * $row4['foodPrice'];
 								if($row3['userRemark']=="正常") { $a += $row3['foodCount']; };
-								if($row3['userRemark']=="加飯/麵") { $b += $row3['foodCount']; };
-								if($row3['userRemark']=="減飯/麵") { $c += $row3['foodCount']; };
+								if($row3['userRemark']=="加") { $b += $row3['foodCount']; };
+								if($row3['userRemark']=="減") { $c += $row3['foodCount']; };
 								if($row3['userRemark']=="去冰") { $d += $row3['foodCount']; };
 								if($row3['userRemark']=="少冰") { $e += $row3['foodCount']; };
 							};

@@ -159,11 +159,11 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					<td><input name="foodCount" id="foodCount" type="text" maxlength="2" size="5" title="請輸入數量" /></td>
 				</tr>
 				<tr>
-					<td><center>飯量:</center></td>
+					<td><center>份量:</center></td>
 					<td>
 						<input type="radio" id="userRemark" name="userRemark" value="正常" checked="checked"><label>正常</label>
-						<input type="radio" id="userRemark" name="userRemark" value="加飯/麵"><label>加飯/麵</label>
-						<input type="radio" id="userRemark" name="userRemark" value="減飯/麵"><label>減飯/麵</label><br/>
+						<input type="radio" id="userRemark" name="userRemark" value="加"><label>加</label>
+						<input type="radio" id="userRemark" name="userRemark" value="減"><label>減</label><br/>
 						<!--- <input type="radio" id="userRemark" name="userRemark" value="去冰"><label>去冰</label>
 						<input type="radio" id="userRemark" name="userRemark" value="少冰"><label>少冰</label> --->
 					</td>
