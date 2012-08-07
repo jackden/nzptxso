@@ -13,7 +13,8 @@ $_SESSION['menuCount'] = 0;
 $_SESSION['menuCount'] = $_POST['menuCount'];
 
 $groupId=$_GET['groupId'];
-if(!$groupId) {header(sprintf("Location: %s", $_SESSION['PrevPage']));}
+$shopId=$_GET['shopId'];
+if(!$groupId && !$shopId) {header(sprintf("Location: %s", $_SESSION['PrevPage']));}
 }
 ?>
 
@@ -39,11 +40,21 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	// 選擇 MySQL 資料庫lunch
 	mysql_select_db('lunch', $connection) or die('資料庫lunch不存在');
 	
-	$query1 = "SELECT shopName FROM lunchGroup WHERE id = '$groupId' "; 
-	// 傳回結果集
-	$result1 = mysql_query($query1, $connection) or die(mysql_error());
-	if ($result1) { $row1 = mysql_fetch_assoc($result1); }
-	$shopName=$row1['shopName'];
+	if($groupId){
+		$query1 = "SELECT shopName FROM lunchGroup WHERE id = '$groupId' "; 
+		// 傳回結果集
+		$result1 = mysql_query($query1, $connection) or die(mysql_error());
+		if ($result1) { $row1 = mysql_fetch_assoc($result1); }
+		$shopName=$row1['shopName'];
+	}
+	
+	if($shopId){
+		$query1 = "SELECT shopName FROM shop WHERE id = '$shopId' "; 
+		// 傳回結果集
+		$result1 = mysql_query($query1, $connection) or die(mysql_error());
+		if ($result1) { $row1 = mysql_fetch_assoc($result1); }
+		$shopName=$row1['shopName'];
+	}
 	
 	for($i=0;$i<count($foodName);$i++)
 	{
@@ -58,7 +69,8 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 	}
 	
 	if ($result) {
-		$uri="order.php?groupId=".$groupId;
+		if($groupId){ $uri="order.php?groupId=".$groupId; }
+		if($shopId){ $uri="create.php"; }
 	    // 回到前一個網頁 
 	  	header(sprintf("Location: %s", $uri));
 	}
@@ -83,7 +95,18 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 			輸入要增加幾筆菜單
 			<input name="menuCount" id="menuCount" type="int" maxlength="30" size="5" />
 			<input id="send" name="submit" type="submit" value="送出" onclick="return CheckFields();" />
-			<br/><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a>
+			<br/><?php
+					if($groupId) {
+				?>
+				<td><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a></td>
+				<?php
+					}
+					if($shopId) {
+				?>
+				<td><a href="create.php">回到上一頁</a></td>
+				<?php
+					}
+				?>
 		</form>
 		<?php
 			};
@@ -111,7 +134,18 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 				</tr>
 				
 				<tr>
+					<?php
+						if($groupId) {
+					?>
 					<td><a href="order.php?groupId=<?php echo $groupId ?>">回到上一頁</a></td>
+					<?php
+						}
+						if($shopId) {
+					?>
+					<td><a href="create.php">回到上一頁</a></td>
+					<?php
+						}
+					?>
 				</tr>
 			</table>
 			<input name="insert" id="insert" type="hidden" value="notice" />

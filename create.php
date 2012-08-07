@@ -99,7 +99,8 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						if ($result) {
 							while ( $row = mysql_fetch_assoc($result) ) {
 						?>
-								<input type="radio" id="shopName" name="shopName" value="<?php echo $row['shopName'] ?>"><label><?php echo $row['shopName'] ."&nbsp; 電話號碼:". $row['shopPhone'] ?></label><br/>
+								<input type="radio" id="shopName" name="shopName" value="<?php echo $row['shopName'] ?>"><label><?php echo $row['shopName'] ."&nbsp; 電話號碼:". $row['shopPhone'] ?></label>
+								<a href="menu.php?shopId=<?php echo $row['id'] ?>">新增菜單</a><br/>
 						<?php
 							}
 							if($num==0)
