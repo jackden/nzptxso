@@ -1,5 +1,5 @@
 // 檢查欄位
-function CheckFields()
+function CheckCreate()
 {	
 	// 檢查『主揪姓名』欄位
 	var fieldvalue = document.getElementById("primaryName").value;
@@ -12,7 +12,7 @@ function CheckFields()
 		
 	// 檢查『店家』欄位
 	var checkit = false;
-	var fieldvalue = document.getElementsByName('shopName');
+	var fieldvalue = document.getElementsByName('create_shopName');
 	
 	for (var i=0;i<fieldvalue.length;i++) {
 		if (fieldvalue[i].checked) 

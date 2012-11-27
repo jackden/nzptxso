@@ -103,7 +103,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 					}
 					if($shopId) {
 				?>
-				<td><a href="create.php">回到上一頁</a></td>
+				<td><a href="index.php">回到上一頁</a></td>
 				<?php
 					}
 				?>
@@ -142,7 +142,7 @@ if ((isset($_POST["insert"])) && ($_POST["insert"] == "notice"))
 						}
 						if($shopId) {
 					?>
-					<td><a href="create.php">回到上一頁</a></td>
+					<td><a href="index.php">回到上一頁</a></td>
 					<?php
 						}
 					?>

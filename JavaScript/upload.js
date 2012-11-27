@@ -1,5 +1,5 @@
 // 檢查欄位
-function CheckFields()
+function CheckUpload()
 {
 	// 檢查『店家名稱』欄位
 	var fieldvalue = document.getElementById("select1");

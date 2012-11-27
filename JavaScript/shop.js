@@ -2,11 +2,11 @@
 function CheckFields()
 {
 	// 檢查『店家名稱』欄位
-	var fieldvalue = document.getElementById("shopName").value;
+	var fieldvalue = document.getElementById("add_shopName").value;
 	if (fieldvalue == "") 
 	{
 		alert("『店家名稱』欄位不可以是空白!");
-		document.getElementById("shopName").focus();
+		document.getElementById("add_shopName").focus();
 		return false;
 	}
 	
